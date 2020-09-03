@@ -1,12 +1,12 @@
 /**
   Endpoints for Providing the Application Credentials to Spotify
 **/
-const logIn = require('../routesHelpers');
+const logIn = require('../fetchFuntions');
 const router = require('express').Router();
 
-router.get('/spotify_access_token', (req, res) => {
-  logIn();
-  res.send({ todo: true });
+router.get('/spotify_access_token', async (req, res) => {
+  const response = await logIn();
+  res.send(response);
 });
 
 module.exports = router;
