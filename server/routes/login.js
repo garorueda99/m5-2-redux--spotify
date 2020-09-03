@@ -6,6 +6,7 @@ const router = require('express').Router();
 
 router.get('/spotify_access_token', async (req, res) => {
   const response = await logIn();
+  console.log('=====>', response);
   res.send(response);
 });
 
