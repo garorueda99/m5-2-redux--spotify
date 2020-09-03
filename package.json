@@ -20,12 +20,15 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "proxy": "http://localhost:5678",
   "dependencies": {
     "date-fns": "^1.30.1",
     "focus-visible": "^4.1.5",
     "immer": "^6.0.2",
     "isomorphic-fetch": "^2.2.1",
+    "morgan": "^1.10.0",
     "new-component": "^1.0.1",
+    "prettier": "^2.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-loader-spinner": "^3.1.5",

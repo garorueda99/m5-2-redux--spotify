@@ -1,28 +1,20 @@
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
+const morgan = require('morgan');
+// const bodyParser = require('body-parser');
 
 const app = new express();
 const port = 5678;
+// app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json()); https://medium.com/@mmajdanski/express-body-parser-and-why-may-not-need-it-335803cd048c
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app
+  .use(express.json())
+  .use(morgan('dev'))
+  .use(require('./routes/login'))
+  .use('/assets', express.static(path.join(__dirname, 'assets')));
 
-app.get('/spotify_access_token', (req, res, next) => {
-  const clientId = process.env.SPOTIFY_CLIENT_ID;
-  const clientSecret = process.env.SPOTIFY_SECRET;
-
-  // We need, annoyingly, a base64-encoded string of our id:secret, for spotify.
-  // We can use Buffers to do this for us.
-  const authString = Buffer.from(clientId + ':' + clientSecret).toString(
-    'base64'
-  );
-
-  // TODO: use authString in a request to Spotify!
-  res.send({ todo: true });
-});
-
-app.listen(port, function(error) {
+app.listen(port, function (error) {
   if (error) {
     console.error(error);
   } else {
