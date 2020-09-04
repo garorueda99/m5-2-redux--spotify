@@ -1,0 +1,2 @@
+File fetchFunctions, line 8, console log and object, return the object, 
+but the object does not appear as response in insomia, why?
