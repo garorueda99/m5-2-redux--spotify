@@ -22,7 +22,7 @@ const App = () => {
     dispatch(requestAccessToken());
     fetch('/spotify_access_token')
       .then((noJson) => noJson.json())
-      .then((json) => receiveAccessToken(json.access_token))
+      .then((json) => dispatch(receiveAccessToken(json.access_token)))
       .catch((err) => {
         console.log(err);
         dispatch(receiveAccessTokenError());
@@ -32,7 +32,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/artist/:id">
+        <Route exact path="/artist/:artistId">
           <ArtistRoute />
         </Route>
         <Route path="/">
