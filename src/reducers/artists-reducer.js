@@ -1,5 +1,6 @@
 const initialState = {
   currentArtist: null,
+  currentArtistAlbums: null,
   status: 'idle',
 };
 
@@ -21,6 +22,12 @@ export default function artistReducer(state = initialState, action) {
         ...state,
         status: 'error',
         error: action.error,
+      };
+    case 'RECEIVE_ARTIST_ALBUMS':
+      return {
+        ...state,
+        status: 'completed',
+        currentArtistAlbums: action.albums,
       };
     default: {
       return state;

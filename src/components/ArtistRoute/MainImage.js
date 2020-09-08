@@ -4,7 +4,6 @@ import { imageSize } from '../../theme';
 const current = 'mobile';
 
 export default function MainImage({ url, name }) {
-  console.log(imageSize);
   return (
     <Img
       style={{

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../theme';
+
 export default function Tags({ elements }) {
-  console.log(elements);
   return (
     <Wrapper>
       <H2>tags</H2>

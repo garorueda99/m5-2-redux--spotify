@@ -23,3 +23,8 @@ export const receiveArtistInfo = (artist) => ({
 export const receiveArtistInfoError = (error) => ({
   type: 'RECEIVE_ARTIST_INFO_ERROR',
 });
+
+export const receiveArtistAlbums = (albums) => ({
+  type: 'RECEIVE_ARTIST_ALBUMS',
+  albums,
+});
