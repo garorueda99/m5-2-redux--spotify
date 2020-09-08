@@ -6,3 +6,7 @@ export const COLORS = {
   charcoal: '#0B0F14',
   grayfade: 'rgba(75, 75, 75, 0.4);',
 };
+
+export const imageSize = {
+  mobile: 175,
+};

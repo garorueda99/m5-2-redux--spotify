@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
 html,
 body,
 div,
-span {
+span, h1, p, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
