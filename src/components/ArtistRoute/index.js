@@ -32,6 +32,7 @@ export default function ArtistRoute() {
           <MainImage url={artist.images[0].url} name={artist.name} />
           <Title>{artist.name}</Title>
           <Followers>{artist.followers.total}</Followers>
+          <div>Top Tracks</div>
           <Tags elements={artist.genres.slice(0, 2)} />
         </Wrapper>
       ) : (
