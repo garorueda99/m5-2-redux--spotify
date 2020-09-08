@@ -20,6 +20,6 @@ export const receiveArtistInfo = (artist) => ({
   artist,
 });
 
-export const receiveArtistInfoError = () => ({
+export const receiveArtistInfoError = (error) => ({
   type: 'RECEIVE_ARTIST_INFO_ERROR',
 });

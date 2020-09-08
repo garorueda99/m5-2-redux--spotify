@@ -1,6 +1,6 @@
 const initialState = {
   currentArtist: null,
-  status: 'idlle',
+  status: 'idle',
 };
 
 export default function artistReducer(state = initialState, action) {
@@ -20,6 +20,7 @@ export default function artistReducer(state = initialState, action) {
       return {
         ...state,
         status: 'error',
+        error: action.error,
       };
     default: {
       return state;
