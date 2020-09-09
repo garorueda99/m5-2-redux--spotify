@@ -6,11 +6,11 @@ export default function Tags({ elements }) {
   return (
     <Wrapper>
       <H2>tags</H2>
-      <ul>
+      <Ul>
         {elements.map((item, index) => (
           <Tag key={index}>{item}</Tag>
         ))}
-      </ul>
+      </Ul>
     </Wrapper>
   );
 }
@@ -21,11 +21,18 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 `;
 
 const H2 = styled.h2`
   font-size: 21px;
   line-height: 26px;
+`;
+
+const Ul = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  min-width: 80%;
 `;
 const Tag = styled.li`
   padding: 8px 15px;
