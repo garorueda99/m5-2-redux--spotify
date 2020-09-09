@@ -18,6 +18,8 @@ import Title from './Title';
 import Followers from './Followers';
 import Tags from './Tags';
 import TopTracks from './TopTracks';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
 
 export default function ArtistRoute() {
   const dispatch = useDispatch();
@@ -41,8 +43,8 @@ export default function ArtistRoute() {
   }, [accessToken]);
   return (
     <>
-      {artist !== null ? (
-        <Wrapper>
+      <Wrapper>
+        {artist !== null ? (
           <Screen>
             <MainImage url={artist.images[0].url} name={artist.name} />
             <Title>{artist.name}</Title>
@@ -50,10 +52,10 @@ export default function ArtistRoute() {
             {tracks !== null ? <TopTracks tracks={tracks} /> : 'LOADING'}
             <Tags elements={artist.genres.slice(0, 2)} />
           </Screen>
-        </Wrapper>
-      ) : (
-        'LOADING'
-      )}
+        ) : (
+          <Loader color={COLORS.primary} />
+        )}
+      </Wrapper>
     </>
   );
 }
@@ -66,6 +68,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   color: ${COLORS.white};
 `;
 
