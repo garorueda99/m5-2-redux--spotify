@@ -12,21 +12,39 @@ export default function TopTracks({ tracks }) {
     <Wrapper>
       <div>top tracks</div>
       <div style={{ marginTop: '26px' }}>
-        <Button onClick={() => setPlay1((n) => !n)}>
+        <Button
+          onClick={() => {
+            setPlay1((n) => !n);
+            setPlay2(false);
+            setPlay3(false);
+          }}
+        >
           <PlayButton
             url={tracks[0].preview_url}
             progressCircleColor={COLORS.primary}
             active={play1}
           />
         </Button>
-        <Button onClick={() => setPlay2((n) => !n)}>
+        <Button
+          onClick={() => {
+            setPlay1(false);
+            setPlay2((n) => !n);
+            setPlay3(false);
+          }}
+        >
           <PlayButton
             url={tracks[1].preview_url}
             progressCircleColor={COLORS.primary}
             active={play2}
           />
         </Button>
-        <Button onClick={() => setPlay3((n) => !n)}>
+        <Button
+          onClick={() => {
+            setPlay1(false);
+            setPlay2(false);
+            setPlay3((n) => !n);
+          }}
+        >
           <PlayButton
             url={tracks[2].preview_url}
             progressCircleColor={COLORS.primary}

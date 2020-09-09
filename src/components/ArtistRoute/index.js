@@ -29,22 +29,28 @@ export default function ArtistRoute() {
     if (!accessToken) {
       return;
     }
-    fetchArtistProfile(accessToken, artistId)
+    const promise1 = fetchArtistProfile(accessToken, artistId)
       .then((data) => dispatch(receiveArtistInfo(data)))
       .catch((err) => dispatch(receiveArtistInfoError(err)));
-    fetchArtistTopTracks(accessToken, artistId).then((data) =>
+    const promise2 = fetchArtistTopTracks(accessToken, artistId).then((data) =>
       dispatch(receiveArtistAlbums(data.tracks.slice(0, 3)))
+    );
+    Promise.all([promise1, promise2]).then((values) =>
+      console.log('========>', values[1])
     );
   }, [accessToken]);
   return (
     <>
       {artist !== null ? (
         <Wrapper>
-          <MainImage url={artist.images[0].url} name={artist.name} />
-          <Title>{artist.name}</Title>
-          <Followers>{artist.followers.total}</Followers>
-          {tracks !== null ? <TopTracks tracks={tracks} /> : 'LOADING'}
-          <Tags elements={artist.genres.slice(0, 2)} />
+          <Screen>
+            {' '}
+            <MainImage url={artist.images[0].url} name={artist.name} />
+            <Title>{artist.name}</Title>
+            <Followers>{artist.followers.total}</Followers>
+            {tracks !== null ? <TopTracks tracks={tracks} /> : 'LOADING'}
+            <Tags elements={artist.genres.slice(0, 2)} />
+          </Screen>
         </Wrapper>
       ) : (
         'LOADING'
@@ -57,6 +63,17 @@ const Wrapper = styled.div`
   background-color: ${COLORS.charcoal};
   height: 100vh;
   width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${COLORS.white};
+`;
+
+const Screen = styled.div`
+  background-color: ${COLORS.charcoal};
+  height: 100%;
+  width: 375px;
   position: relative;
   display: flex;
   flex-direction: column;
