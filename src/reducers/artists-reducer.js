@@ -1,12 +1,13 @@
 const initialState = {
   currentArtist: null,
   currentArtistAlbums: null,
+  related: null,
   status: 'idle',
 };
 
 export default function artistReducer(state = initialState, action) {
   switch (action.type) {
-    case 'REQUEST_ARTIST_INFO':
+    case 'REQUEST_ALL_ARTIST_INFO':
       return {
         ...state,
         status: 'loading',
@@ -26,8 +27,18 @@ export default function artistReducer(state = initialState, action) {
     case 'RECEIVE_ARTIST_ALBUMS':
       return {
         ...state,
-        status: 'completed',
+        status: 'idle',
         currentArtistAlbums: action.albums,
+      };
+    case 'ALL_ARTIST_INFO_RECEIVED':
+      return {
+        ...state,
+        status: 'loaded',
+      };
+    case 'ALL_RELATED_ARTIST_INFO_RECEIVED':
+      return {
+        ...state,
+        related: action.relatedArtists,
       };
     default: {
       return state;

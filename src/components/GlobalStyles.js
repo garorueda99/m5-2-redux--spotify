@@ -9,6 +9,7 @@ span, h1, p, ul, li {
   padding: 0;
   border: 0;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 
 /* GLOBAL STYLES */

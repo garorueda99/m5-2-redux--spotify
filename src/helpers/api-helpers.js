@@ -20,3 +20,14 @@ export async function fetchArtistTopTracks(token, artistId) {
     .catch((err) => console.log('FETCHING ALBUM ERROR', err));
   return response;
 }
+
+export async function fetchRelatedArtists(token, artistId) {
+  const options = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const url = `https://api.spotify.com/v1/artists/${artistId}/related-artists`;
+  const response = await fetch(url, options)
+    .then((res) => res.json())
+    .catch((err) => console.log('FETCHING RELATED ARTISTS ERROR', err));
+  return response;
+}

@@ -18,9 +18,8 @@ const Img = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
-  top: 7.266%;
+  top: 59px;
   height: ${imageSize[current]}px;
   width: ${imageSize[current]}px;
   border-radius: 50%;
-  border: 2px solid purple;
 `;

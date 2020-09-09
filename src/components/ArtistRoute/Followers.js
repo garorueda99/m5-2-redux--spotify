@@ -7,8 +7,7 @@ export default function Followers({ children }) {
 }
 
 const P = styled.p`
-  position: absolute;
-  top: 31.65%;
+  margin-top: 23px;
   font-style: normal;
   font-weight: 600;
   color: ${COLORS.primary};

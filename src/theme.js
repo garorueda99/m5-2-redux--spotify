@@ -9,4 +9,5 @@ export const COLORS = {
 
 export const imageSize = {
   mobile: 175,
+  small: 50,
 };

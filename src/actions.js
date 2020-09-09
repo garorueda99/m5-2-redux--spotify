@@ -11,8 +11,8 @@ export const receiveAccessTokenError = () => ({
   type: 'RECEIVE_ACCESS_TOKEN_ERROR',
 });
 
-export const requestArtistInfo = () => ({
-  type: 'REQUEST_ARTIST_INFO',
+export const requestAllArtistInfo = () => ({
+  type: 'REQUEST_ALL_ARTIST_INFO',
 });
 
 export const receiveArtistInfo = (artist) => ({
@@ -27,4 +27,13 @@ export const receiveArtistInfoError = (error) => ({
 export const receiveArtistAlbums = (albums) => ({
   type: 'RECEIVE_ARTIST_ALBUMS',
   albums,
+});
+
+export const finishingReceivingAllArtistInfo = () => ({
+  type: 'ALL_ARTIST_INFO_RECEIVED',
+});
+
+export const receiveRelatedArtist = (relatedArtists) => ({
+  type: 'ALL_RELATED_ARTIST_INFO_RECEIVED',
+  relatedArtists,
 });

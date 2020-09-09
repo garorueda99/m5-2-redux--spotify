@@ -16,8 +16,7 @@ export default function Tags({ elements }) {
 }
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 58.867%;
+  margin-top: 5px;
   display: flex;
   align-items: center;
   flex-direction: column;

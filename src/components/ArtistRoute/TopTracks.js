@@ -10,7 +10,6 @@ export default function TopTracks({ tracks }) {
   const [play2, setPlay2] = useState(false);
   const [play3, setPlay3] = useState(false);
   const [open, setOpen] = useState(false);
-  console.log(open);
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -21,7 +20,6 @@ export default function TopTracks({ tracks }) {
     setPlay2(false);
     setPlay3(false);
   };
-
   return (
     <Wrapper>
       <div>top tracks</div>
@@ -46,6 +44,7 @@ export default function TopTracks({ tracks }) {
             setPlay1(false);
             setPlay2((n) => !n);
             setPlay3(false);
+            !tracks[1].preview_url && setOpen(true);
           }}
         >
           <PlayButton
@@ -60,6 +59,7 @@ export default function TopTracks({ tracks }) {
             setPlay1(false);
             setPlay2(false);
             setPlay3((n) => !n);
+            !tracks[2].preview_url && setOpen(true);
           }}
         >
           <PlayButton
@@ -80,8 +80,7 @@ export default function TopTracks({ tracks }) {
 }
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 41.626%;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -3,12 +3,16 @@ import { useSelector } from 'react-redux';
 import {
   fetchArtistProfile,
   fetchArtistTopTracks,
+  fetchRelatedArtists,
 } from '../../helpers/api-helpers';
 import { useParams } from 'react-router-dom';
 import {
+  requestAllArtistInfo,
   receiveArtistInfo,
   receiveArtistInfoError,
   receiveArtistAlbums,
+  finishingReceivingAllArtistInfo,
+  receiveRelatedArtist,
 } from '../../actions';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -18,6 +22,7 @@ import Title from './Title';
 import Followers from './Followers';
 import Tags from './Tags';
 import TopTracks from './TopTracks';
+import RelatedArtists from './RelatedArtists';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import Loader from 'react-loader-spinner';
 
@@ -26,31 +31,38 @@ export default function ArtistRoute() {
   const { artistId } = useParams();
   const accessToken = useSelector((state) => state.auth.token);
   const artist = useSelector((state) => state.artists.currentArtist);
+  const status = useSelector((state) => state.artists.status);
   const tracks = useSelector((state) => state.artists.currentArtistAlbums);
   useEffect(() => {
     if (!accessToken) {
       return;
     }
-    const promise1 = fetchArtistProfile(accessToken, artistId)
-      .then((data) => dispatch(receiveArtistInfo(data)))
-      .catch((err) => dispatch(receiveArtistInfoError(err)));
-    const promise2 = fetchArtistTopTracks(accessToken, artistId).then((data) =>
-      dispatch(receiveArtistAlbums(data.tracks.slice(0, 3)))
+    dispatch(requestAllArtistInfo());
+    const promise1 = fetchArtistProfile(accessToken, artistId).then((data) =>
+      dispatch(receiveArtistInfo(data))
     );
-    Promise.all([promise1, promise2]).then((values) =>
-      console.log('========>', values[1])
+    const promise2 = fetchArtistTopTracks(accessToken, artistId).then((data) =>
+      dispatch(receiveArtistAlbums(data.tracks.splice(0, 3)))
+    );
+    const promise3 = fetchRelatedArtists(accessToken, artistId).then((data) =>
+      dispatch(receiveRelatedArtist(data.artists))
+    );
+
+    Promise.all([promise1, promise2, promise3]).then((values) =>
+      dispatch(finishingReceivingAllArtistInfo())
     );
   }, [accessToken]);
   return (
     <>
       <Wrapper>
-        {artist !== null ? (
+        {status === 'loaded' ? (
           <Screen>
             <MainImage url={artist.images[0].url} name={artist.name} />
             <Title>{artist.name}</Title>
             <Followers>{artist.followers.total}</Followers>
             {tracks !== null ? <TopTracks tracks={tracks} /> : 'LOADING'}
             <Tags elements={artist.genres.slice(0, 2)} />
+            <RelatedArtists />
           </Screen>
         ) : (
           <Loader color={COLORS.primary} />
