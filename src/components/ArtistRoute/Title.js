@@ -7,9 +7,11 @@ export default function Title({ children }) {
 
 const H1 = styled.h1`
   position: absolute;
+  text-align: center;
   top: 21.305%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   font-size: 48px;
+  width: 100%;
 `;

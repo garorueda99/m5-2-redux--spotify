@@ -27,7 +27,7 @@ const ArtistRoute = () => {
   }, [accessToken]);
 
   if (!artist) {
-    return "Loading…";
+    return 'Loading…';
   }
 
   return; /* Whatever your UI is */
@@ -69,7 +69,7 @@ First, the API might return multiple tracks. Let's limit it to the first 3.
 For each one, render something like this:
 
 ```js
-import PlayButton from "react-play-button";
+import PlayButton from 'react-play-button';
 
 <PlayButton
   url={track.preview_url}

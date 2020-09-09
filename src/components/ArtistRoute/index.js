@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   fetchArtistProfile,
@@ -44,7 +44,6 @@ export default function ArtistRoute() {
       {artist !== null ? (
         <Wrapper>
           <Screen>
-            {' '}
             <MainImage url={artist.images[0].url} name={artist.name} />
             <Title>{artist.name}</Title>
             <Followers>{artist.followers.total}</Followers>
@@ -66,13 +65,13 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   color: ${COLORS.white};
 `;
 
 const Screen = styled.div`
   background-color: ${COLORS.charcoal};
-  height: 100%;
+  min-height: 100%;
   width: 375px;
   position: relative;
   display: flex;
