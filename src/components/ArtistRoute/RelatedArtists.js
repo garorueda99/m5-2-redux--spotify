@@ -2,25 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { imageSize } from '../../theme';
+import { Link } from 'react-router-dom';
+
 const current = 'small';
 
 export default function RelatedArtists() {
   const relatedArtist = useSelector((state) => state.artists.related);
-  console.log(relatedArtist);
   return (
     <Wrapper>
       related artists
       <Nav>
-        {relatedArtist.map((element) => {
+        {relatedArtist.map((element, index) => {
           return (
-            <Card>
-              <Img
-                style={{
-                  backgroundImage: `url(${element.images[0].url})`,
-                }}
-              />
-              <Artist>{element.name}</Artist>
-            </Card>
+            <CSSLink to={`/artist/${element.id}`}>
+              <Card key={`artist-${index}`}>
+                <Img
+                  style={{
+                    backgroundImage: `url(${element.images[0].url})`,
+                  }}
+                />
+                <Artist>{element.name}</Artist>
+              </Card>
+            </CSSLink>
           );
         })}
       </Nav>
@@ -89,4 +92,9 @@ const Img = styled.div`
   height: ${imageSize[current]}px;
   width: ${imageSize[current]}px;
   border-radius: 50%;
+`;
+
+const CSSLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
 `;
