@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { imageSize } from '../../theme';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const current = 'small';
 
@@ -14,7 +14,7 @@ export default function RelatedArtists() {
       <Nav>
         {relatedArtist.map((element, index) => {
           return (
-            <CSSLink to={`/artist/${element.id}`}>
+            <Anchor href={`/artist/${element.id}`} exact>
               <Card key={`artist-${index}`}>
                 <Img
                   style={{
@@ -23,7 +23,7 @@ export default function RelatedArtists() {
                 />
                 <Artist>{element.name}</Artist>
               </Card>
-            </CSSLink>
+            </Anchor>
           );
         })}
       </Nav>
@@ -94,7 +94,7 @@ const Img = styled.div`
   border-radius: 50%;
 `;
 
-const CSSLink = styled(Link)`
+const Anchor = styled.a`
   text-decoration: none;
   color: inherit;
 `;
