@@ -80,7 +80,7 @@ export default function TopTracks({ tracks }) {
 }
 
 const Wrapper = styled.div`
-  margin-top: 25px;
+  margin-top: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -16,19 +16,21 @@ export default function Tags({ elements }) {
 }
 
 const Wrapper = styled.div`
-  margin-top: 5px;
+  margin-top: 48px;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
+  height: fit-content;
 `;
 
 const H2 = styled.h2`
   font-size: 21px;
-  line-height: 26px;
 `;
 
 const Ul = styled.ul`
+  margin-top: 24px;
   position: relative;
   display: flex;
   justify-content: space-around;

@@ -29,7 +29,7 @@ export default function RelatedArtists() {
 }
 
 const Wrapper = styled.div`
-  margin-top: 25px;
+  margin-top: 30px;
   font-style: normal;
   font-weight: 600;
   font-size: 21px;
@@ -42,7 +42,10 @@ const Wrapper = styled.div`
 `;
 
 const Nav = styled.nav`
+  margin-top: 5px;
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -51,19 +54,32 @@ const Nav = styled.nav`
 `;
 
 const Card = styled.div`
-  width: 60px;
-  margin: 10px 10px;
+  position: relative;
+  min-width: 125px;
+  height: 150px;
+  margin: 10px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  scroll-snap-align: start;
 `;
 
 const Artist = styled.div`
+  position: absolute;
+  top: 80px;
+  height: 90px;
   flex: 1;
-  font-size: 0.7rem;
-  line-height: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
   text-align: center;
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.75), 0px 4px 4px rgba(0, 0, 0, 0.5),
+    4px 8px 25px #000000;
 `;
 
 const Img = styled.div`

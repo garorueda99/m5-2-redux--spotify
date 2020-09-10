@@ -1,15 +1,19 @@
 import { createGlobalStyle } from 'styled-components';
-
+import { COLORS } from '../theme';
 const GlobalStyles = createGlobalStyle`
 html,
 body,
 div,
-span, h1, p, ul, li {
+span, h1, h2, p, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
   vertical-align: baseline;
   box-sizing: border-box;
+}
+
+body{
+  background-color: ${COLORS.charcoal}
 }
 
 /* GLOBAL STYLES */
